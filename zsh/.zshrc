@@ -111,3 +111,5 @@ eval "$(starship init zsh)"
 
 alias vi="nvim"
 alias vim="nvim"
+
+alias ranger=". ranger"
