@@ -113,3 +113,5 @@ alias vi="nvim"
 alias vim="nvim"
 
 alias ranger=". ranger"
+
+export TERM=xterm-256color
