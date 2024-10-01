@@ -3,6 +3,6 @@
 ## installation
 
 ```
-stow --adopt ./
+stow --adopt */
 git restore .
 ```
