@@ -5,3 +5,5 @@
 	name = jackwrfuller
 [color]
     ui = auto
+[push]
+	autoSetupRemote = true

@@ -33,6 +33,9 @@ vim.opt.rtp:prepend(lazypath)
 --           Lazy-load on key mapping
 --     opts: The table will be passed to the require(...).setup(opts)
 require("lazy").setup({
+    {
+        'arcticicestudio/nord-vim',
+    },
     -- oil.nvim
     {
         'stevearc/oil.nvim',
@@ -40,6 +43,32 @@ require("lazy").setup({
         -- Optional dependencies
         dependencies = { { "echasnovski/mini.icons", opts = {} } },
         -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
+    },
+    {
+        "ThePrimeagen/harpoon",
+        branch = "harpoon2",
+        dependencies = { "nvim-lua/plenary.nvim" }
+    },
+    -- JDTLS --
+    {
+        "mfussenegger/nvim-jdtls",
+        ft = "java",
+    },
+    -- Colorizer --
+    {
+        "catgoose/nvim-colorizer.lua",
+        event = "BufReadPre",
+        opts = {
+            user_default_options = {
+                names = true,
+                css = true,
+                rgb_fn = true,
+                css_fn = true,
+            },
+        },
+        config = function()
+            require("colorizer").setup()
+        end,
     },
 	-- LSP manager
 	"williamboman/mason.nvim",

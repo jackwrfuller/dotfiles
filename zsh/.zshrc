@@ -74,7 +74,10 @@ plugins=(
 	git
 	zsh-autosuggestions
 	zsh-syntax-highlighting
+    ahoy
+    zsh-vi-mode
 )
+
 
 source $ZSH/oh-my-zsh.sh
 
@@ -87,14 +90,23 @@ source $ZSH/oh-my-zsh.sh
 
 # Preferred editor for local and remote sessions
 export EDITOR='nvim'
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='nvim'
-# fi
+if [[ -n $SSH_CONNECTION ]]; then
+  export TERM='xterm-256color'
+else
+  export TERM='xterm-kitty'
+fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch $(uname -m)"
+
+ranger() {
+    if [ -z "$RANGER_LEVEL" ]; then
+        /opt/homebrew/bin/ranger "$@"
+    else
+        exit
+    fi
+}
+
 
 # Set personal aliases, overriding those provided by Oh My Zsh libs,
 # plugins, and themes. Aliases can be placed here, though Oh My Zsh
@@ -112,6 +124,16 @@ eval "$(starship init zsh)"
 alias vi="nvim"
 alias vim="nvim"
 
-alias ranger=". ranger"
+disable r
+alias r="ranger"
+alias ranger="ranger"
 
-export TERM=xterm-256color
+export XDG_CONFIG_HOME="$HOME/.config"
+export COMPOSER_HOME="$XDG_CONFIG_HOME/composer"
+export PATH="$PATH:$COMPOSER_HOME/vendor/bin"
+#tmux source "$XDG_CONFIG_HOME/tmux/tmux.conf"
+
+alias ssh='TERM=xterm-256color ssh'
+export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
+
+
